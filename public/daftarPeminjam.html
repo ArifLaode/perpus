@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peminjam</title>
+    <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent mx-auto" style="padding-left: 50px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Perpustakaan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/"><i class='fas fa-home'></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/daftarPeminjam.html"><i class='fas fa-users-viewfinder'></i> Daftar Peminjam</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/daftarBuku.html"><i class='fas fa-book'></i> Daftar Buku</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/daftarAnggota.html" tabindex="-1"><i class='fas fa-user'></i> Daftar Anggota</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mt-5">Daftar Peminjam</h1>
+        <p class="text-center mt-5">Berikut adalah daftar peminjam buku di perpustakaan</p>
+        <div class="container-fluid">
+            <div class="col-md-5">
+                <div class="position-absolute top-30 start-50 translate-middle-x">
+                    <table class="table align-middle text-center table-primary table-striped">
+                        <thead class="thead-primary">
+                            <tr>
+                                <th>ID Peminjam</th>
+                                <th>ID Anggota</th>
+                                <th>ID Buku</th>
+                                <th>Tanggal Pinjam</th>
+                                <th>Tanggal Pengembalian</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>101</td>
+                                <td>1001</td>
+                                <td>2023-01-15</td>
+                                <td>2023-01-22</td>
+                                <td><button class="btn btn-secondary" title="edit" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i></button></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5"></td>
+                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fas fa-plus"></i></button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit Data Peminjam</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container mt-5">
+                                <h2 class="mb-4">Form Edit Data Peminjaman</h2>
+                                <form id="form-edit-data">
+                                    <div class="mb-3">
+                                        <label for="editIdPeminjam" class="form-label">ID Peminjam</label>
+                                        <input type="text" class="form-control" id="editIdPeminjam" name="editIdPeminjam" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editIdAnggota" class="form-label">ID Anggota</label>
+                                        <input type="text" class="form-control" id="editIdAnggota" name="editIdAnggota" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editIdBuku" class="form-label">ID Buku</label>
+                                        <input type="text" class="form-control" id="editIdBuku" name="editIdBuku" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editTanggalPinjam" class="form-label">Tanggal Pinjam</label>
+                                        <input type="date" class="form-control" id="editTanggalPinjam" name="editTanggalPinjam" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editTanggalPengembalian" class="form-label">Tanggal Pengembalian</label>
+                                        <input type="date" class="form-control" id="editTanggalPengembalian" name="editTanggalPengembalian" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Edit Data</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">Edit Data Peminjam</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container mt-5">
+                                <h2 class="mb-4">Form Tambah Data Peminjaman</h2>
+                                <form id="form-tambah-data">
+                                    <div class="mb-3">
+                                        <label for="idPeminjam" class="form-label">ID Peminjam</label>
+                                        <input type="text" class="form-control" id="idPeminjam" name="idPeminjam" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idAnggota" class="form-label">ID Anggota</label>
+                                        <input type="text" class="form-control" id="idAnggota" name="idAnggota" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idBuku" class="form-label">ID Buku</label>
+                                        <input type="text" class="form-control" id="idBuku" name="idBuku" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tanggalPinjam" class="form-label">Tanggal Pinjam</label>
+                                        <input type="date" class="form-control" id="tanggalPinjam" name="tanggalPinjam" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tanggalPengembalian" class="form-label">Tanggal Pengembalian</label>
+                                        <input type="date" class="form-control" id="tanggalPengembalian" name="tanggalPengembalian" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('form-tambah-data').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = {
+                idPeminjam: document.getElementById('idPeminjam').value,
+                idAnggota: document.getElementById('idAnggota').value,
+                idBuku: document.getElementById('idBuku').value,
+                tanggalPinjam: document.getElementById('tanggalPinjam').value,
+                tanggalPengembalian: document.getElementById('tanggalPengembalian').value,
+            };
+            console.log('Data Tambah Buku:', data);
+            // Kirim data ke server atau API
+        });
+        document.getElementById('form-edit-data').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = {
+                idPeminjam: document.getElementById('editIdPeminjam').value,
+                idAnggota: document.getElementById('editIdAnggota').value,
+                idBuku: document.getElementById('editIdBuku').value,
+                tanggalPinjam: document.getElementById('editTanggalPinjam').value,
+                tanggalPengembalian: document.getElementById('editTanggalPengembalian').value,
+            };
+            console.log('Data Edit Buku:', data);
+            // Kirim data ke server atau API
+        });
+    </script>
+</body>
+</html>

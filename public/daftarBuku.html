@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Buku</title>
+    <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent mx-auto" style="padding-left: 50px;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Perpustakaan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/"><i class='fas fa-home'></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/daftarPeminjam.html"><i class='fas fa-users-viewfinder'></i> Daftar Peminjam</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/daftarBuku.html"><i class='fas fa-book'></i> Daftar Buku</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/daftarAnggota.html" tabindex="-1"><i class='fas fa-user'></i> Daftar Anggota</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="mt-5">Daftar Buku</h1>
+        <p class="text-center mt-5">Berikut adalah daftar buku yang tersedia di perpustakaan</p>
+        <div class="container-fluid">
+            <div class="col-md-5">
+                <div class="position-absolute top-30 start-50 translate-middle-x">
+                    <table class="table align-middle text-center table-primary table-striped">
+                        <thead class="thead-primary">
+                            <tr>
+                                <th>ID Buku</th>
+                                <th>Judul Buku</th>
+                                <th>Pengarang</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fas fa-plus"></i></button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="container mt-5">
+                                <h2 class="mb-4">Form Edit Data Buku</h2>
+                                <form id="form-edit-buku">
+                                    <div class="mb-3">
+                                        <label for="editIdBuku" class="form-label">ID Buku</label>
+                                        <input type="text" class="form-control" id="editIdBuku" name="editIdBuku" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editJudulBuku" class="form-label">Judul Buku</label>
+                                        <input type="text" class="form-control" id="editJudulBuku" name="editJudulBuku" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editPengarang" class="form-label">Pengarang</label>
+                                        <input type="text" class="form-control" id="editPengarang" name="editPengarang" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Edit Data</button>
+                                </form>
+                            </div>
+                            <div id="fail" class="alert alert-danger" role="alert" style="display: none;">
+                                Tidak dapat mengedit data
+                              </div>
+                            </div>
+                            <div id="succ" class="alert alert-success" role="alert" style="display: none;">
+                            Berhasil mengedit Data
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h2 class="mb-4">Form Tambah Data Buku</h2>
+                            <form id="form-tambah-buku">
+                                <div class="mb-3">
+                                    <label for="idBuku" class="form-label">ID Buku</label>
+                                    <input type="text" class="form-control" id="idBuku" name="idBuku" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="judulBuku" class="form-label">Judul Buku</label>
+                                    <input type="text" class="form-control" id="judulBuku" name="judulBuku" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pengarang" class="form-label">Pengarang</label>
+                                    <input type="text" class="form-control" id="pengarang" name="pengarang" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                            </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <script src="./bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('form-tambah-buku').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const data = {
+        idBuku: document.getElementById('idBuku').value,
+        judulBuku: document.getElementById('judulBuku').value,
+        pengarang: document.getElementById('pengarang').value,
+    };
+    console.log('Data Tambah Buku:', data);
+    fetch('/api/addBuku', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        // Tambahkan logika untuk menangani respons sukses
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Tambahkan logika untuk menangani error
+    });
+});
+        document.getElementById('form-edit-buku').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const id = document.getElementById('editIdBuku').value;
+            const data = {
+                judulBuku: document.getElementById('editJudulBuku').value,
+                pengarang: document.getElementById('editPengarang').value,
+            };
+
+            fetch(`/api/editBuku/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Tambahkan logika untuk menghandle respons dari server, seperti menutup modal atau menampilkan pesan sukses
+                document.getElementById('succ').style.display = 'block';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Tambahkan logika untuk menghandle error, seperti menampilkan pesan error
+                document.getElementById('fail').style.display = 'block';
+            });
+        });
+        function fetchDataBuku() {
+    fetch('/api/dataBuku')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById('data');
+            tbody.innerHTML = ''; // Bersihkan tbody terlebih dahulu
+
+            data.forEach(data => {
+                const row = `
+                    <tr>
+                        <td>${data.id_buku}</td>
+                        <td>${data.nama}</td>
+                        <td>${data.pengarang}</td>
+                        <td>
+                            <button onclick="editBuku(${data.id})" class="btn btn-warning btn-sm">Edit</button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Tambahkan logika untuk menangani error, seperti menampilkan pesan error
+        });
+}
+
+// Panggil fungsi ini saat halaman dimuat
+document.addEventListener('DOMContentLoaded', fetchDataBuku);
+    </script>
+</body>
+</html>
