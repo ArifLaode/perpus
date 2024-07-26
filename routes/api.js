@@ -54,6 +54,6 @@ function addData(url, tb_name, data) {
 
 getData('/dataPeminjam', 'peminjam');
 addData('dataPeminjam', 'peminjam');
-editData('/editBuku/:id', 'buku');ada deh
+editData('/editBuku/:id', 'buku');
 
 module.exports = router;
