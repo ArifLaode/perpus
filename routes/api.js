@@ -36,26 +36,24 @@ function editData(url, tb_name) {
     });
 }
 
-function addData(url, tb_name) {
-    var data = req.body;
-    console.log(data);
+function addData(url, tb_name, data) {
     var sql = `INSERT INTO ${tb_name} (${data}) VALUES (${data})`;
-    db.query(sql, (err, data) => {
-        if (err) {
-            console.log(`Tidak bisa menambah data di tabel ${tb_name} dengan error: ${err}`);
-            res.status(500).send('Gagal menambah data.');
-        } else {
-            console.log(`Berhasil menambah data di tabel ${tb_name} dengan data: ${data}`);
-            res.send(data);
-        }
+    router.post(url, (req, res) => {
+        db.query(sql, (err, data) => {
+            if (err) {
+                console.log(`Tidak bisa menambah data di tabel ${tb_name} dengan error: ${err}`);
+                res.status(500).send('Gagal menambah data.');
+            } else {
+                console.log(`Berhasil menambah data di tabel ${tb_name} dengan data: ${data}`);
+                res.send(data);
+            }
+        });
     });
 }
 
 
 getData('/dataPeminjam', 'peminjam');
 addData('dataPeminjam', 'peminjam');
-addData('/addBuku', 'buku');
-getData('/dataBuku', 'buku');
 editData('/editBuku/:id', 'buku');
 
 module.exports = router;
